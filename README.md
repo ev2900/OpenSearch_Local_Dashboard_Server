@@ -6,5 +6,5 @@ Amazon OpenSearch managed services provides an OpenSearch dashboard as part of a
 
 The instructions in the repository will provide direction to host a local OpenSearch hosted dashboard server with an Amazon OpenSearch domain
 
-## Hosting OpenSearch dashboard via. Docker on Linux
+## Hosting OpenSearch dashboard server via. Docker on linux
 
