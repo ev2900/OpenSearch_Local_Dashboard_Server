@@ -9,7 +9,7 @@ services:
     expose:
       - "5601"
     environment:
-      OPENSEARCH_HOSTS: '["domain_endpoint_url"]'
+      OPENSEARCH_HOSTS: '["<domain_endpoint_url>"]'
       OPENSEARCH_DASHBOARD_INDEX: ".username"
       OPENSEARCH_SECURITY_AUTH_TYPE: basicauth
       OPENSEARCH_SECURITY_AUTH_ANONYMOUS_AUTH_ENABLED: false
