@@ -22,7 +22,7 @@ services:
       # OPENSEARCH_SECURITY_AUTH_UNAUTHENTICATED_ROUTES: []
       OPENSEARCH_SECURITY_BASICAUTH_LOGIN_TITLE: 'Please log in using your username and password'
       OPENSEARCH_USERNAME: '<user_name>'
-      OPENSEARCH_PASSWORD: '<pass_word>'
+      OPENSEARCH_PASSWORD: '<password>'
       # OPENSEARCH_REQUESTHEADERSWHITELIST: '[authorization, securitytenant, security_tenant]'
       OPENSEARCH_REQUESTHEADERSALLOWLIST: '[authorization, securitytenant, security_tenant]'
 
