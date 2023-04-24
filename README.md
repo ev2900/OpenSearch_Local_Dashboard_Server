@@ -8,3 +8,12 @@ The instructions in the repository will provide direction to host a local OpenSe
 
 ## Hosting OpenSearch dashboard server via. Docker on linux
 
+These instructions will help you install and run a OpenSearch dashboard server as a docker container on a linux machine.
+
+1. Install Docker and Docker Compose. 
+
+    Install Docker engine following the instructions in the [install docker engine documentation](https://docs.docker.com/engine/install/) 
+    
+    Install Docker compose following the instructions in the [install docker compose documentation](https://docs.docker.com/compose/install/)
+    
+2. 
