@@ -12,8 +12,8 @@ These instructions will help you install and run a OpenSearch dashboard server a
 
 1. Install Docker and Docker Compose. 
 
-    Install Docker engine following the instructions in the [install docker engine documentation](https://docs.docker.com/engine/install/) 
+    Install Docker **engine** following the instructions in the [install docker engine documentation](https://docs.docker.com/engine/install/) 
     
-    Install Docker compose following the instructions in the [install docker compose documentation](https://docs.docker.com/compose/install/)
+    Install Docker **compose** following the instructions in the [install docker compose documentation](https://docs.docker.com/compose/install/)
     
 2. 
