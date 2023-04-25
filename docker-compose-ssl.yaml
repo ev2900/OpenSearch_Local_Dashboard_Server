@@ -11,6 +11,12 @@ services:
       OPENSEARCH_HOSTS: '["<domain_endpoint_url>"]'
       OPENSEARCH_USERNAME: '<user_name>'
       OPENSEARCH_PASSWORD: '<pass_word>'
+      OPENSEARCH_SSL_VERIFICATIONMODE: certificate # none, certificate, full
+      OPENSEARCH_SSL_CERTIFICATEAUTHORITIES: '["<full_path_to_CA_certificates>"]'
+      SERVER_SSL_ENABLED: 'true'
+      SERVER_SSL_CERTIFICATE: '<full_path_to_client_certificate>'
+      SERVER_SSL_KEY: '<full_path_client_certificate_key>'
+      OPENSEARCH_SECURITY_COOKIE_SECURE: 'true'
     networks:
       - opensearch-net
 networks:
