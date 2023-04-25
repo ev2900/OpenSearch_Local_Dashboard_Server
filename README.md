@@ -22,4 +22,4 @@ These instructions will help you install and run a OpenSearch dashboard server a
 
     You may need 
     
-3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose up -f  <path_to_docker_console_simple>```
+3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose up -f <path_to_docker_console_simple>```
