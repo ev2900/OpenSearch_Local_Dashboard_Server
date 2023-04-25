@@ -9,7 +9,7 @@ services:
     expose:
       - "5601"
     environment:
-      OPENSEARCH_HOSTS: '["domain_endpoint_url"]'
+      OPENSEARCH_HOSTS: '["<domain_endpoint_url>"]'
       OPENSEARCH_DASHBOARD_INDEX: ".username"
       OPENSEARCH_SECURITY_AUTH_TYPE: basicauth
       OPENSEARCH_SECURITY_AUTH_ANONYMOUS_AUTH_ENABLED: false
@@ -19,11 +19,11 @@ services:
       OPENSEARCH_SECURITY_SESSION_KEEPALIVE: false
       OPENSEARCH_SECURITY_MULTITENANCY_ENABLE: false
       OPENSEARCH_SECURITY_READONLY_MODE_ROLES: '[opensearch_dashboards_read_only]'
-      # OPENSEARCH_SECURITY_AUTH_UNAUTHENTICATED_ROUTES: []
+      #OPENSEARCH_SECURITY_AUTH_UNAUTHENTICATED_ROUTES: []
       OPENSEARCH_SECURITY_BASICAUTH_LOGIN_TITLE: 'Please log in using your username and password'
       OPENSEARCH_USERNAME: '<user_name>'
       OPENSEARCH_PASSWORD: '<pass_word>'
-      # OPENSEARCH_REQUESTHEADERSWHITELIST: '[authorization, securitytenant, security_tenant]'
+      #OPENSEARCH_REQUESTHEADERSWHITELIST: '[authorization, securitytenant, security_tenant]'
       OPENSEARCH_REQUESTHEADERSALLOWLIST: '[authorization, securitytenant, security_tenant]'
 
     networks:
