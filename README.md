@@ -6,9 +6,9 @@ Amazon OpenSearch managed services provides an OpenSearch dashboard as part of a
 
 The instructions in the repository will provide direction to host a local OpenSearch hosted dashboard server with an Amazon OpenSearch domain
 
-## Hosting OpenSearch dashboard server via. Docker on Linux
+## Hosting OpenSearch dashboard server via. Docker on Linux without SSL
 
-These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine.
+These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container is configured in the simplest configuration without SSL
 
 1. Install Docker 
 
@@ -20,4 +20,6 @@ These instructions will help you install and run a OpenSearch dashboard server a
     * Replace ```<user_name>```
     * Replace ```<password>```
 
+    You may need 
+    
 3. With you terminal in the same directory as the [docker-compose.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose.yaml) file start the docker container by running ```docker-compose up```
