@@ -24,6 +24,7 @@ services:
       OPENSEARCH_USERNAME: '<user_name>'
       OPENSEARCH_PASSWORD: '<pass_word>'
       #OPENSEARCH_REQUESTHEADERSWHITELIST: '[authorization, securitytenant, security_tenant]'
+      # OPENSEARCH_REQUESTHEADERSWHITELIST: '[authorization, securitytenant, security_tenant]'
       OPENSEARCH_REQUESTHEADERSALLOWLIST: '[authorization, securitytenant, security_tenant]'
 
     networks:
