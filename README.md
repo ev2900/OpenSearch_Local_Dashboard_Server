@@ -10,9 +10,10 @@ The instructions in the repository will provide direction to host a local OpenSe
 
 These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container is configured in the simplest configuration without SSL
 
-1. Install Docker 
+1. Install Docker and Docker compose
 
-    Install Docker following the instructions in the [install docker engine documentation](https://docs.docker.com/engine/install/) 
+    * ```sudo apt-get install docker```
+    * ```sudo apt-get install docker-compose```
     
 2. Update the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) 
     
@@ -27,3 +28,4 @@ These instructions will help you install and run a OpenSearch dashboard server a
 
 ## Hosting OpenSearch dashboard server via. Docker on Linux with SSL
 
+1. Create a self-signed certificate
