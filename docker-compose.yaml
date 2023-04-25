@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:2.5.0
     container_name: opensearch-dashboards-only
@@ -22,13 +21,9 @@ services:
       #OPENSEARCH_SECURITY_AUTH_UNAUTHENTICATED_ROUTES: []
       OPENSEARCH_SECURITY_BASICAUTH_LOGIN_TITLE: 'Please log in using your username and password'
       OPENSEARCH_USERNAME: '<user_name>'
-      OPENSEARCH_PASSWORD: '<pass_word>'
-      #OPENSEARCH_REQUESTHEADERSWHITELIST: '[authorization, securitytenant, security_tenant]'
-      # OPENSEARCH_REQUESTHEADERSWHITELIST: '[authorization, securitytenant, security_tenant]'
+      OPENSEARCH_PASSWORD: '<pass_word>
       OPENSEARCH_REQUESTHEADERSALLOWLIST: '[authorization, securitytenant, security_tenant]'
-
     networks:
       - opensearch-net
-
 networks:
   opensearch-net:
