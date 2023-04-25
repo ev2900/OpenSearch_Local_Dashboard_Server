@@ -12,12 +12,14 @@ services:
       OPENSEARCH_USERNAME: '<user_name>'
       OPENSEARCH_PASSWORD: '<pass_word>'
       OPENSEARCH_SSL_VERIFICATIONMODE: certificate # none, certificate, full
-      OPENSEARCH_SSL_CERTIFICATEAUTHORITIES: '["<full_path_to_CA_certificates>"]'
+      OPENSEARCH_SSL_CERTIFICATEAUTHORITIES: '["certs/<CA_certificate>"]'
       SERVER_SSL_ENABLED: 'true'
-      SERVER_SSL_CERTIFICATE: '<full_path_to_client_certificate>'
-      SERVER_SSL_KEY: '<full_path_client_certificate_key>'
+      SERVER_SSL_CERTIFICATE: 'certs/<client_certificate>'
+      SERVER_SSL_KEY: 'certs/<client_certificate_key>'
       OPENSEARCH_SECURITY_COOKIE_SECURE: 'true'
     networks:
       - opensearch-net
+    volumes:
+      - <path_to_folder_w_certs_keys>:/certs
 networks:
   opensearch-net:
