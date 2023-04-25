@@ -28,23 +28,5 @@ These instructions will help you install and run a OpenSearch dashboard server a
 
 ## Hosting OpenSearch dashboard server via. Docker on Linux with SSL
 
-* Install openssl ```sudo apt-get install openssl```
 
-* Generate a private key ```openssl genrsa -out root-ca-key.pem 2048```
-
-* Using private key generate a root certificate ```openssl req -new -x509 -sha256 -key root-ca-key.pem -out root-ca.pem -days 365```
-
-* ```openssl genrsa -out admin-key-temp.pem 2048```
-* ```openssl pkcs8 -inform PEM -outform PEM -in admin-key-temp.pem -topk8 -nocrypt -v1 PBE-SHA1-3DES -out admin-key.pem```
-* ```openssl req -new -key admin-key.pem -out admin.csr```
-
-* ```rm admin-key-temp.pem```
-* ```rm admin.csr```
-
-You are left with
-| Name              | Type                | 
-|-------------------|-------------------- | 
-| root-ca.pem       |  Certificate        | 
-| root-ca-key.pem   |  Encryption key     | 
-| admin-key.pem     |  Encryption key     | 
 
