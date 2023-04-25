@@ -28,5 +28,9 @@ These instructions will help you install and run a OpenSearch dashboard server a
 
 ## Hosting OpenSearch dashboard server via. Docker on Linux with SSL
 
+[docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
 
+OpenSearch docs 
+   * [Configure TLS for OpenSearch Dashboards](https://opensearch.org/docs/2.5/install-and-configure/install-dashboards/tls/)
+   * [Generating self-signed certificates](https://opensearch.org/docs/2.5/security/configuration/generate-certificates/)
 
