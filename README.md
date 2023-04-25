@@ -20,6 +20,7 @@ These instructions will help you install and run a OpenSearch dashboard server a
     * Replace ```<user_name>```
     * Replace ```<password>```
 
-    You may need to update the image version. The image is set to version 2.5 and it should be the same your version as your Amazon     OpenSearch domain
+    You may need to update the image version. The image is set to version 2.5 and the version should be the same as the    
+    version of OpenSearch that your Amazon OpenSearch domain is running
     
 3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose up -f <path_to_docker_console_simple>```
