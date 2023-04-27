@@ -53,9 +53,3 @@ These instructions will help you install and run a OpenSearch dashboard server a
     version of OpenSearch that your Amazon OpenSearch domain is running
 
 4. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
-
-OpenSearch docs 
-   * [Configure TLS for OpenSearch Dashboards](https://opensearch.org/docs/2.5/install-and-configure/install-dashboards/tls/)
-   * [Generating self-signed certificates](https://opensearch.org/docs/2.5/security/configuration/generate-certificates/)
-
-
