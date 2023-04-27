@@ -21,17 +21,17 @@ Parameters:
       - '1.1.0'
       - '1.0.0'
     Description: Which version of the OpenSearch dashboard service should ECS run?
-    # What is the host url?
-    OSHostUrl:
-      Type: String
-      Default: 'https://domain-endpoint'
-      Description: DO NOT INCLUDE TRAILING /
-    # What is the host user name?
-    OSUserName:
-      Type: String
-    # What is the host password?
-    OSPassword:
-      Type: String 
+  # What is the host url?
+  OSHostUrl:
+    Type: String
+    Default: 'https://domain-endpoint'
+    Description: DO NOT INCLUDE TRAILING /
+  # What is the host user name?
+  OSUserName:
+    Type: String
+  # What is the host password?
+  OSPassword:
+    Type: String 
 
 Conditions:
   isPubliclyAccessible: !Equals [!Ref PubliclyAccessible, 'Yes']
