@@ -2,7 +2,7 @@
 
 You can connect a self hosted OpenSearch dashboard server to an Amazon OpenSearch hosted domain. 
 
-Amazon OpenSearch managed services provides an OpenSearch dashboard as part of a domain deployment. For various reasons you may choose to host your own dashboard server and then connect it to your OpenSearch domain. 
+Amazon OpenSearch managed services provides an OpenSearch dashboard as part of a domain deployment. For various reasons you may choose to host your own dashboard server and then connect it to your Amazon OpenSearch managed domain. 
 
 The instructions in this repository will provide direction to host a local OpenSearch hosted dashboard server with an Amazon OpenSearch domain. 
 
