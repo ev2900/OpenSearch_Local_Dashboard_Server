@@ -1,0 +1,215 @@
+Description: Kafka OpenSearch Anomaly Detection Lab
+
+Resources:
+
+  # -----------------
+  #
+  # NETWORK
+  #
+  # -----------------
+  
+  # -----------------
+  # VPC
+  # ----------------- 
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: '10.0.0.0/16'
+      Tags:
+        - Key: Name
+          Value: ecs-vpc
+      EnableDnsSupport: True
+      EnableDnsHostnames: True
+
+  # -----------------
+  # Internet Gateway
+  # -----------------
+  VPCInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: ecs-internet-gateway
+  # Attach InternetGateway to VPC
+  AttachInternetGatewayVPC:
+    Type: 'AWS::EC2::VPCGatewayAttachment'
+    Properties:
+      InternetGatewayId: 
+        Ref: VPCInternetGateway
+      VpcId:
+        Ref: VPC
+
+  # -----------------
+  # Subnets
+  # ----------------- 
+
+  #
+  # Subnet 1
+  #
+  Subnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: '10.0.0.0/28'
+      AvailabilityZone: 'us-east-1a'
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: ecs-subnet-1 | us-east-1a
+
+  # -----------------
+  # Network Security Groups
+  # -----------------
+  
+  #
+  # MSK Security Group
+  #   
+  ECSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: 'ecs security group'
+      GroupDescription: 'ecs security group'
+      VpcId: !Ref VPC
+      # Egress rules
+      SecurityGroupEgress:
+        - IpProtocol: -1
+          FromPort: -1 
+          ToPort: -1
+          CidrIp: '0.0.0.0/0'
+      Tags:
+        - Key: Name
+          Value: 'ecs security group'
+  # add a self reference ingress rule 
+  ECSSecurityGroupIngress1:
+    Type: 'AWS::EC2::SecurityGroupIngress'
+    Properties:
+      # Ingress rules
+      GroupId: !Ref ECSSecurityGroup
+      IpProtocol: -1
+      FromPort: -1
+      ToPort: -1
+      SourceSecurityGroupId: !GetAtt ECSSecurityGroup.GroupId
+
+  # -----------------
+  # Route Table
+  # -----------------
+  VPCRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: ecs-route-table
+      VpcId: !Ref VPC
+  # add a route to the internet gateway
+  InternetGatewayRoute:
+    Type: AWS::EC2::Route
+    Properties: 
+      RouteTableId: !Ref VPCRouteTable
+      DestinationCidrBlock: '0.0.0.0/0'
+      GatewayId: !Ref VPCInternetGateway
+
+  # associate route table with subnets (Subnet1, Subnet2)
+  Subnet1Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: 
+      RouteTableId: !Ref VPCRouteTable
+      SubnetId: !Ref Subnet1
+
+  # -----------------
+  #
+  # IAM
+  #
+  # -----------------
+  ECSExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: 'ECS-Execution-Role'
+      Description: 'IAM role for ECS task to use'
+      # Trust relationships
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ecs-tasks.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      # Premissions
+      Policies:
+        # Firehose premissions
+        - PolicyName: ecs_task_policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - ecr:GetAuthorizationToken
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:GetDownloadUrlForLayer
+                  - ecr:BatchGetImage
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                  - logs:CreateLogGroup
+                Resource: '*'
+
+  # -----------------
+  #
+  # Elastic Container Service (ECS)
+  #
+  # -----------------
+
+  # -----------------
+  # ECS Cluster
+  # -----------------
+  ECSCluster:
+    Type: 'AWS::ECS::Cluster'
+    Properties:
+      ClusterName: opensearch-dashboard-fargate-cluster
+      CapacityProviders:
+        - FARGATE
+        - FARGATE_SPOT
+      DefaultCapacityProviderStrategy:
+        - CapacityProvider: FARGATE
+          Weight: 1
+        - CapacityProvider: FARGATE_SPOT
+          Weight: 1
+
+  # -----------------
+  # Task Definition
+  # -----------------
+  ECSTaskDefinition: 
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: opensearch-dashboard-task-definition
+      Cpu: 2048
+      Memory: 9216
+      ExecutionRoleArn: !GetAtt ECSExecutionRole.Arn
+      RuntimePlatform:
+        CpuArchitecture: X86_64
+        OperatingSystemFamily: LINUX
+      RequiresCompatibilities:
+        - FARGATE
+      NetworkMode: awsvpc
+      ContainerDefinitions:
+        - name: opensearch-dashboard
+          image: opensearchproject/opensearch-dashboards:2.5.0
+          portMappings:
+            - name: opensearch-dashboard-5601-tcp
+              containerPort: 5601
+              hostPort: 5601
+              protocol: tcp
+              appProtocol: http
+          environment:
+            - name: OPENSEARCH_USERNAME
+              value: ev2900
+            - name: OPENSEARCH_HOSTS
+              value: https://search-opensearch-local-dashboard-6pg6jnsxtlltseyjqpl23wttp4.us-east-1.es.amazonaws.com
+            - name: OPENSEARCH_PASSWORD
+              value: Everest2900#
+          logConfiguration:
+            logDriver: awslogs
+            options:
+              awslogs-create-group: true
+              awslogs-group: /ecs/opensearch-dashboard
+              awslogs-region: !Sub ${AWS::Region}
+              awslogs-stream-prefix: ecs
