@@ -106,4 +106,4 @@ These instructions will help you install and run a OpenSearch dashboard server a
 
 5. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
 
-6. In you web browser navigate to [https://localhost/](https://localhost/) to access the OpenSearch dashboard
+6. In your web browser navigate to [https://localhost/](https://localhost/) to access the OpenSearch dashboard. If you used a self-signed certificate your web browser may flag the website as unsecure. You will have to bypass the warning on your web browser.
