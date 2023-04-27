@@ -16,8 +16,6 @@ To deploy an ECS container running the OpenSearch dashboard click the button
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=opensearch-dashboard-no-ssl-ecs-fargate&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/opensearch-dashboard-no-ssl-ecs-fargate.yaml)
 
-
-
 # Host OpenSearch dashboard using Docker on Linux
 
 These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container running the OpenSearch dashboard can be configured with or without SSL. The configuration without SSL in the simplest.
