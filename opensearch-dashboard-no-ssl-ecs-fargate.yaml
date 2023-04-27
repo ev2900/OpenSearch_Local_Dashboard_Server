@@ -1,7 +1,29 @@
 Description: Kafka OpenSearch Anomaly Detection Lab
 
-Resources:
+Parameters:
+  PubliclyAccessible:
+    Type: String
+    Default: 'No'
+    AllowedValues:
+      - 'No'
+      - 'Yes'
+    Description: Do you want to add a inbound rules to the NSG to allow all inbound taffic? ie. making the container accessible to the public internet
+  OpenSearchDashboardVersion:
+    Type: String
+    Default: '2.5.0'
+    AllowedValues:
+      - '2.5.0'
+      - '2.3.0'
+      - '1.3.0'
+      - '1.2.0'
+      - '1.1.0'
+      - '1.0.0'
+    Description: Which version of the OpenSearch dashboard service should ECS run?
 
+Conditions:
+  isPubliclyAccessible: !Equals [!Ref PubliclyAccessible, 'Yes']
+
+Resources:
   # -----------------
   #
   # NETWORK
@@ -88,6 +110,17 @@ Resources:
       FromPort: -1
       ToPort: -1
       SourceSecurityGroupId: !GetAtt ECSSecurityGroup.GroupId
+  # allow all inbound traffic from public internet if PubliclyAccessible = Yes
+  ECSSecurityGroupIngress2:
+    Type: 'AWS::EC2::SecurityGroupIngress'
+    Condition: isPubliclyAccessible
+    Properties:
+      # Ingress rules
+      GroupId: !Ref ECSSecurityGroup
+      IpProtocol: -1
+      FromPort: -1
+      ToPort: -1
+      CidrIp: '0.0.0.0/0'
 
   # -----------------
   # Route Table
@@ -192,7 +225,9 @@ Resources:
       NetworkMode: awsvpc
       ContainerDefinitions:
         - name: opensearch-dashboard
-          image: opensearchproject/opensearch-dashboards:2.5.0
+          image: !Sub
+            - opensearchproject/opensearch-dashboards:${Version}
+            - Version: !Ref OpenSearchDashboardVersion
           portMappings:
             - name: opensearch-dashboard-5601-tcp
               containerPort: 5601
