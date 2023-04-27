@@ -33,7 +33,7 @@ Once the CloudFormation deployment completes follow the steps below to access th
 
 # Host OpenSearch dashboard using Docker on Linux
 
-These instructions will help you configure and run a OpenSearch dashboard server as a docker container on a Linux machine. The OpenSearch dashboard service can be configured [without SSL](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#without-ssl) or [with SSL](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#with-ssl).
+These instructions will help you configure and run an OpenSearch dashboard server as a docker container on a Linux machine. The OpenSearch dashboard service can be configured [without SSL](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#without-ssl) or [with SSL](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#with-ssl)
 
 ## without SSL
 
@@ -52,6 +52,8 @@ These instructions will help you configure and run a OpenSearch dashboard server
     version of OpenSearch that your Amazon OpenSearch domain is running
     
 3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_simple> up```
+
+4. In you web browser navigate to [http://localhost:5601/](http://localhost:5601/) to access the OpenSearch dashboard
 
 ## with SSL
 
