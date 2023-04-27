@@ -52,11 +52,37 @@ These instructions will help you install and run a OpenSearch dashboard server a
     * ```sudo apt-get install docker```
     * ```sudo apt-get install docker-compose```
 
-2. Generate a local Certifying Authority and issue a certificate for the local dashboard server.
+2. Generate a local certifying authority
 
-   [Generating self-signed certificates](https://opensearch.org/docs/2.5/security/configuration/generate-certificates/)
+    If you do not have access to a certifying authority, here are instructions to create one to issue certificates. Default parameters for openssl are used.
 
-3. Update [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
+    *Install OpenSSL*
+    * ```sudo apt-get install openssl```
+
+    *Create a private key for your certifying authority*
+    * ```openssl genrsa -out root-ca-key.pem 2048```
+
+    *Generate a self-signed certificate*
+    * ```openssl req -new -x509 -sha256 -key root-ca-key.pem -out root-ca.pem -days 730```
+
+
+3. Generate a node certificate
+
+   Create a certificate signed by the certifying authority you created in the previous step.
+
+   *Create a private key for your certificate*
+   * ```openssl genrsa -out node1-key-temp.pem 2048```
+
+   *Create a certificate request using the key*
+   * ```openssl req -new -key node1-key.pem -out node1.csr```
+
+   *Create a SAN extension file that describes the hostname used by the dashboard server. This may be necessary for some browsers. We will use 'localhost'.*
+   * ```echo 'subjectAltName=DNS:localhost' > node1.ext```
+
+   *Issue a certificate using our CA*
+   * ```openssl x509 -req -in node1.csr -CA root-ca.pem -CAkey root-ca-key.pem -CAcreateserial -sha256 -out node1.pem -days 730 -extfile node1.ext```
+
+4. Update [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
 
     * Replace ```<domain_endpoint_url>``` with the OpenSearch domain endpoint
     * Replace ```<user_name>```
@@ -69,4 +95,4 @@ These instructions will help you install and run a OpenSearch dashboard server a
     You may need to update the image version. The image is set to version 2.5 and the version should be the same as the
     version of OpenSearch that your Amazon OpenSearch domain is running
 
-4. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
+5. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
