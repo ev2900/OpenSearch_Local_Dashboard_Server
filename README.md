@@ -48,9 +48,9 @@ These instructions will help you configure and run an OpenSearch dashboard serve
     * Replace ```<user_name>```
     * Replace ```<password>```
 
-    You may need to update the OpenSeach dashboard image version. The image in [the sample](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-no-ssl.yaml) is set to version 2.5. The version should be the same as the version of OpenSearch that your Amazon OpenSearch domain is running
+    You may need to update the OpenSeach dashboard image version. The image in [the sample](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-no-ssl.yaml) is set to version 2.5. The version should be the same as the version of OpenSearch that your Amazon OpenSearch (managed service) domain is running
     
-3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_simple> up```
+3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file and start the docker container by running ```docker-compose -f <path_to_docker_compose_simple> up```
 
 4. In you web browser navigate to [http://localhost:5601/](http://localhost:5601/) to access the OpenSearch dashboard
 
@@ -75,7 +75,6 @@ These instructions will help you install and run a OpenSearch dashboard server a
 
     *Generate a self-signed certificate*
     * ```openssl req -new -x509 -sha256 -key root-ca-key.pem -out root-ca.pem -days 730```
-
 
 3. Generate a node certificate
 
@@ -103,7 +102,8 @@ These instructions will help you install and run a OpenSearch dashboard server a
     * Replace ```<node_certificate_key>``` with the associated private key of the issued certificate
     * Replace ```<path_to_folder_w_certs_key>``` with the local path of your certificate files
 
-    You may need to update the image version. The image is set to version 2.5 and the version should be the same as the
-    version of OpenSearch that your Amazon OpenSearch domain is running
+    You may need to update the OpenSeach dashboard image version. The image in [the sample](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) is set to version 2.5. The version should be the same as the version of OpenSearch that your Amazon OpenSearch (managed service) domain is running
 
 5. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
+
+6. In you web browser navigate to [https://localhost/](https://localhost/) to access the OpenSearch dashboard
