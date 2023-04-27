@@ -1,6 +1,7 @@
 Description: Kafka OpenSearch Anomaly Detection Lab
 
 Parameters:
+  # Should the ECS service be publicly accessible ? 
   PubliclyAccessible:
     Type: String
     Default: 'No'
@@ -8,6 +9,7 @@ Parameters:
       - 'No'
       - 'Yes'
     Description: Do you want to add a inbound rules to the NSG to allow all inbound taffic? ie. making the container accessible to the public internet
+  # What version should is the OpenSearch dashboard be?
   OpenSearchDashboardVersion:
     Type: String
     Default: '2.5.0'
@@ -19,6 +21,17 @@ Parameters:
       - '1.1.0'
       - '1.0.0'
     Description: Which version of the OpenSearch dashboard service should ECS run?
+    # What is the host url?
+    OSHostUrl:
+      Type: String
+      Default: 'https://domain-endpoint'
+      Description: DO NOT INCLUDE TRAILING /
+    # What is the host user name?
+    OSUserName:
+      Type: String
+    # What is the host password?
+    OSPassword:
+      Type: String 
 
 Conditions:
   isPubliclyAccessible: !Equals [!Ref PubliclyAccessible, 'Yes']
@@ -236,11 +249,11 @@ Resources:
               appProtocol: http
           environment:
             - name: OPENSEARCH_USERNAME
-              value: ev2900
+              value: !Ref OSUserName
             - name: OPENSEARCH_HOSTS
-              value: https://search-opensearch-local-dashboard-6pg6jnsxtlltseyjqpl23wttp4.us-east-1.es.amazonaws.com
+              value: !Ref OSHostUrl
             - name: OPENSEARCH_PASSWORD
-              value: Everest2900#
+              value: !Ref OSPassword
           logConfiguration:
             logDriver: awslogs
             options:
@@ -248,3 +261,21 @@ Resources:
               awslogs-group: /ecs/opensearch-dashboard
               awslogs-region: !Sub ${AWS::Region}
               awslogs-stream-prefix: ecs
+
+  # -----------------
+  # Service
+  # -----------------
+  ECSService:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: opensearch-dashboard-service
+      Cluster: !Ref ECSCluster
+      LaunchType: FARGATE
+      TaskDefinition: !Ref ECSTaskDefinition
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          SecurityGroups: 
+            - !Ref ECSSecurityGroup
+          Subnets: 
+            - !Ref Subnet1
