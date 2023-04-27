@@ -12,7 +12,7 @@ These instructions will help you deploy an OpenSearch dashboard server as a task
 
 ## without SSL
 
-To deploy a an ECS container running the OpenSearch dashboard click the button 
+To deploy an ECS container running the OpenSearch dashboard click the button 
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=opensearch-dashboard-no-ssl-ecs-fargate&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/opensearch-dashboard-no-ssl-ecs-fargate.yaml)
 
