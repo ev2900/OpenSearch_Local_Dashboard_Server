@@ -24,13 +24,38 @@ These instructions will help you install and run a OpenSearch dashboard server a
     You may need to update the image version. The image is set to version 2.5 and the version should be the same as the    
     version of OpenSearch that your Amazon OpenSearch domain is running
     
-3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_console_simple> up```
+3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_simple> up```
 
 ## Hosting OpenSearch dashboard server via. Docker on Linux with SSL
 
-[docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
+These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container is configured with a self-signed certificate.
+
+1. Install Docker and Docker compose
+
+    * ```sudo apt-get install docker```
+    * ```sudo apt-get install docker-compose```
+
+2. Generate a local Certifying Authority and issue a certificate for the local dashboard server.
+
+   [Generating self-signed certificates](https://opensearch.org/docs/2.5/security/configuration/generate-certificates/)
+
+3. Update [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
+
+    * Replace ```<domain_endpoint_url>``` with the OpenSearch domain endpoint
+    * Replace ```<user_name>```
+    * Replace ```<password>```
+    * Replace ```<CA_certificate>``` with the location of the root RA (root-ca.pem)
+    * Replace ```<node_certificate>``` with the location of the issued certificate (node1.pem)
+    * Replace ```<node_certificate_key>``` with the associated private key of the issued certificate
+    * Replace ```<path_to_folder_w_certs_key>``` with the local path of your certificate files
+
+    You may need to update the image version. The image is set to version 2.5 and the version should be the same as the
+    version of OpenSearch that your Amazon OpenSearch domain is running
+
+4. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
 
 OpenSearch docs 
    * [Configure TLS for OpenSearch Dashboards](https://opensearch.org/docs/2.5/install-and-configure/install-dashboards/tls/)
    * [Generating self-signed certificates](https://opensearch.org/docs/2.5/security/configuration/generate-certificates/)
+
 

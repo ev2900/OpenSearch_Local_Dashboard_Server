@@ -12,10 +12,10 @@ services:
       OPENSEARCH_USERNAME: '<user_name>'
       OPENSEARCH_PASSWORD: '<pass_word>'
       OPENSEARCH_SSL_VERIFICATIONMODE: certificate # none, certificate, full
-      OPENSEARCH_SSL_CERTIFICATEAUTHORITIES: '["certs/<CA_certificate>"]'
+      OPENSEARCH_SSL_CERTIFICATEAUTHORITIES: '["certs/<CA_certificate>","/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"]' # local CA, root certs
       SERVER_SSL_ENABLED: 'true'
-      SERVER_SSL_CERTIFICATE: 'certs/<client_certificate>'
-      SERVER_SSL_KEY: 'certs/<client_certificate_key>'
+      SERVER_SSL_CERTIFICATE: 'certs/<node_certificate>'
+      SERVER_SSL_KEY: 'certs/<node_certificate_key>'
       OPENSEARCH_SECURITY_COOKIE_SECURE: 'true'
     networks:
       - opensearch-net
