@@ -13,7 +13,7 @@ The instructions below provide two deployment options
 
 # Host OpenSearch dashboard via. Amazon ECS Fargate
 
-These instructions will help you deploy an OpenSearch dashboard server as a task on an Amazon Elastic Container Service Fargate cluster. The Fargate task will run the OpenSearch dashboard. The dashboard can be configured with or without SSL. The configuration without SSL in the simplest.
+These instructions will help you deploy an OpenSearch dashboard server as a task on an Amazon Elastic Container Service Fargate cluster. The Fargate task will run the OpenSearch dashboard. The dashboard can be configured with or without SSL.
 
 ## without SSL
 
@@ -35,7 +35,7 @@ Use the public IP address on port 5601 to navigate to the OpenSearch dashboard i
 
 # Host OpenSearch dashboard using Docker on Linux
 
-These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container running the OpenSearch dashboard can be configured with or without SSL. The configuration without SSL in the simplest.
+These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container running the OpenSearch dashboard can be configured with or without SSL.
 
 ## without SSL
 
