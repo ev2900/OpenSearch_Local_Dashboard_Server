@@ -1,10 +1,15 @@
 # OpenSearch Local Hosted Dashboard Server
 
-You can connect a locally hosted OpenSearch dashboard server to an Amazon OpenSearch hosted domain. 
+You can connect a self hosted OpenSearch dashboard server to an Amazon OpenSearch hosted domain. 
 
 Amazon OpenSearch managed services provides an OpenSearch dashboard as part of a domain deployment. For various reasons you may choose to host your own dashboard server and then connect it to your OpenSearch domain. Instead of using the OpenSearch dashboard provided with Amazon OpenSearch managed service.
 
-The instructions in the repository will provide direction to host a local OpenSearch hosted dashboard server with an Amazon OpenSearch domain
+The instructions in the repository will provide direction to host a local OpenSearch hosted dashboard server with an Amazon OpenSearch domain. 
+
+The instructions below provide two deployment options
+
+* [Host OpenSearch dashboard via. Amazon ECS Fargate](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-via-amazon-ecs-fargate)
+* [Host OpenSearch dashboard using Docker on Linux](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-using-docker-on-linux)
 
 # Host OpenSearch dashboard via. Amazon ECS Fargate
 
@@ -12,11 +17,9 @@ These instructions will help you deploy an OpenSearch dashboard server as a task
 
 ## without SSL
 
-To deploy an ECS container running the OpenSearch dashboard click the button 
+To deploy an ECS container running the OpenSearch dashboard click the button. Ensure you fill out the required CloudFormation parameters 
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=opensearch-dashboard-no-ssl-ecs-fargate&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/opensearch-dashboard-no-ssl-ecs-fargate.yaml)
-
-
 
 # Host OpenSearch dashboard using Docker on Linux
 
