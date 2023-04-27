@@ -6,9 +6,15 @@ Amazon OpenSearch managed services provides an OpenSearch dashboard as part of a
 
 The instructions in the repository will provide direction to host a local OpenSearch hosted dashboard server with an Amazon OpenSearch domain
 
-## Hosting OpenSearch dashboard server via. Docker on Linux
+# Host OpenSearch dashboard via. Amazon Elastic Container Service (ECS) Fargate
 
-### Without SSL enabled
+
+[![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=opensearch-dashboard-no-ssl-ecs-fargate&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/opensearch-dashboard-no-ssl-ecs-fargate.yaml)
+
+
+# Host OpenSearch dashboard using Docker on Linux
+
+## without SSL
 
 These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container is configured in the simplest configuration without SSL
 
@@ -28,7 +34,7 @@ These instructions will help you install and run a OpenSearch dashboard server a
     
 3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_simple> up```
 
-### With SSL enabled
+## with SSL
 
 These instructions will help you install and run a OpenSearch dashboard server as a docker container on a Linux machine. The docker container is configured with a self-signed certificate.
 
@@ -55,5 +61,3 @@ These instructions will help you install and run a OpenSearch dashboard server a
     version of OpenSearch that your Amazon OpenSearch domain is running
 
 4. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
-
-## Hosting OpenSearch dashboard server via. Amazon Elastic Container Service (ECS) Fargate without SSL
