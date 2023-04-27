@@ -11,23 +11,23 @@ This repository provides how to instructions using two deployment options
 
 # Host OpenSearch dashboard via. Amazon ECS Fargate
 
-These instructions will help you deploy an OpenSearch dashboard server as a task on an Amazon Elastic Container Service Fargate cluster. The Fargate task will run the OpenSearch dashboard. The dashboard can be configured with or without SSL.
+These instructions will help you deploy an OpenSearch dashboard server as a task on an Amazon Elastic Container Service (ECS) Fargate cluster. The Fargate task will run the OpenSearch dashboard. 
 
-## without SSL
-
-To deploy an ECS container running the OpenSearch dashboard click the button. Ensure you fill out the required CloudFormation parameters 
+To deploy an ECS task running the OpenSearch dashboard click the button below. Ensure you fill out the required CloudFormation parameters. 
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=opensearch-dashboard-no-ssl-ecs-fargate&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/opensearch-dashboard-no-ssl-ecs-fargate.yaml)
 
-To access the OpenSearch dashboard hosted on the ECS container. Navigate to the fargate cluster [opensearch-dashboard-fargate-cluster](https://us-east-1.console.aws.amazon.com/ecs/v2/clusters/opensearch-dashboard-fargate-cluster). You should see 1 task running
+Once the CloudFormation deployment completes follow the steps below to access the OpenSearch dashboard hosted on ECS
+
+1. Navigate to the fargate cluster [opensearch-dashboard-fargate-cluster](https://us-east-1.console.aws.amazon.com/ecs/v2/clusters/opensearch-dashboard-fargate-cluster)
 
 <img width="800" alt="map-user" src="https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/README/cluster.png">
 
-Click on the task
+2. Click on the task
 
 <img width="800" alt="map-user" src="https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/README/ip.png">
 
-Use the public IP address on port 5601 to navigate to the OpenSearch dashboard in your browser
+3. Use the public IP address on port 5601 in your web browser to access the OpenSearch dashboard
 
 <img width="800" alt="map-user" src="https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/README/dashboard.png">
 
