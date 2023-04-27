@@ -31,7 +31,7 @@ Click on the task
 
 Use the public IP address on port 5601 to navigate to the OpenSearch dashboard in your browser
 
-
+<img width="800" alt="map-user" src="https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/README/dashboard.png">
 
 # Host OpenSearch dashboard using Docker on Linux
 
