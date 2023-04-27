@@ -6,8 +6,8 @@ Amazon OpenSearch (managed service) provides an OpenSearch dashboard as part of 
 
 This repository provides how to instructions using two deployment options
 
-* [OpenSearch dashboard service via. Amazon ECS Fargate](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-via-amazon-ecs-fargate)
-* [OpenSearch dashboard service via. Docker on Linux](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-using-docker-on-linux)
+* [OpenSearch dashboard deployment via. **Amazon Elastic Container Service** (ECS) Fargate](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-via-amazon-ecs-fargate)
+* [OpenSearch dashboard deployment via. **Docker on Linux**](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-using-docker-on-linux)
 
 # Host OpenSearch dashboard via. Amazon ECS Fargate
 
