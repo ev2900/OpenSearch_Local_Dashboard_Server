@@ -4,7 +4,7 @@ You can connect a self hosted OpenSearch dashboard server to an Amazon OpenSearc
 
 Amazon OpenSearch managed services provides an OpenSearch dashboard as part of a domain deployment. For various reasons you may choose to host your own dashboard server and then connect it to your Amazon OpenSearch managed domain. 
 
-The instructions in this repository will provide how to instruction. The instructions provided include two deployment options
+The instructions in this repository will provide how to instruction using two deployment options
 
 * [OpenSearch dashboard service via. Amazon ECS Fargate](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-via-amazon-ecs-fargate)
 * [OpenSearch dashboard service via. Docker on Linux](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/tree/main#host-opensearch-dashboard-using-docker-on-linux)
