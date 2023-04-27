@@ -8,9 +8,9 @@ The instructions in the repository will provide direction to host a local OpenSe
 
 # Host OpenSearch dashboard via. Amazon ECS Fargate
 
+## without SSL
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=opensearch-dashboard-no-ssl-ecs-fargate&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/opensearch-dashboard-no-ssl-ecs-fargate.yaml)
-
 
 # Host OpenSearch dashboard using Docker on Linux
 
