@@ -63,47 +63,22 @@ These instructions will help you install and run a OpenSearch dashboard server a
     * ```sudo apt-get install docker```
     * ```sudo apt-get install docker-compose```
 
-2. Generate a local certifying authority
-
-    If you do not have access to a certifying authority, here are instructions to create one to issue certificates. Default parameters for openssl are used.
+2. Generate a self-signed certificate and certifying authority
 
     *Install OpenSSL*
     * ```sudo apt-get install openssl```
 
-    *Create a private key for your certifying authority*
-    * ```openssl genrsa -out root-ca-key.pem 2048```
+    *Run the included script*
+    * ```bash generate-cert.sh```
 
-    *Generate a self-signed certificate*
-    * ```openssl req -new -x509 -sha256 -key root-ca-key.pem -out root-ca.pem -days 730```
-
-3. Generate a node certificate
-
-   Create a certificate signed by the certifying authority you created in the previous step.
-
-   *Create a private key for your certificate*
-   * ```openssl genrsa -out node1-key-temp.pem 2048```
-
-   *Create a certificate request using the key*
-   * ```openssl req -new -key node1-key-temp.pem -out node1.csr```
-
-   *Create a SAN extension file that describes the hostname used by the dashboard server. This may be necessary for some browsers. We will use 'localhost'.*
-   * ```echo 'subjectAltName=DNS:localhost' > node1.ext```
-
-   *Issue a certificate using our CA*
-   * ```openssl x509 -req -in node1.csr -CA root-ca.pem -CAkey root-ca-key.pem -CAcreateserial -sha256 -out node1.pem -days 730 -extfile node1.ext```
-
-4. Update [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
+3. Update [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
 
     * Replace ```<domain_endpoint_url>``` with the OpenSearch domain endpoint
     * Replace ```<user_name>```
     * Replace ```<password>```
-    * Replace ```<CA_certificate>``` with the location of the root RA (root-ca.pem)
-    * Replace ```<node_certificate>``` with the location of the issued certificate (node1.pem)
-    * Replace ```<node_certificate_key>``` with the associated private key of the issued certificate (node1-key-temp.pem)
-    * Replace ```<path_to_folder_w_certs_key>``` with the local path of your certificate files
 
-    You may need to update the OpenSeach dashboard image version. The image in [the sample](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) is set to version 2.5. The version should be the same as the version of OpenSearch that your Amazon OpenSearch (managed service) domain is running
+    You may need to update the OpenSeach dashboard image version. The image in [the sample](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) is set to version 2.5. The version should be the same as the version of OpenSearch that your Amazon OpenSearch (managed service) domain is running
 
 5. Run the [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml) file start the docker container by running ```docker-compose -f <path_to_docker_compose_ssl> up```
 
-6. In your web browser navigate to [https://localhost/](https://localhost/) to access the OpenSearch dashboard. If you used a self-signed certificate your web browser may flag the website as unsecure. You will have to bypass the warning on your web browser.
+6. In your web browser navigate to [https://localhost:5601/](https://localhost:5601/) to access the OpenSearch dashboard. If you used a self-signed certificate your web browser may flag the website as unsecure. You will have to bypass the warning on your web browser. (For Chrome, you can type thisisunsafe to bypass the warning. Be sure you are correctly accessing the URL.)
