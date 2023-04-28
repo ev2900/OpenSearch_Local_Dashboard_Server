@@ -99,7 +99,7 @@ These instructions will help you install and run a OpenSearch dashboard server a
     * Replace ```<password>```
     * Replace ```<CA_certificate>``` with the location of the root RA (root-ca.pem)
     * Replace ```<node_certificate>``` with the location of the issued certificate (node1.pem)
-    * Replace ```<node_certificate_key>``` with the associated private key of the issued certificate
+    * Replace ```<node_certificate_key>``` with the associated private key of the issued certificate (node1-key-temp.pem)
     * Replace ```<path_to_folder_w_certs_key>``` with the local path of your certificate files
 
     You may need to update the OpenSeach dashboard image version. The image in [the sample](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) is set to version 2.5. The version should be the same as the version of OpenSearch that your Amazon OpenSearch (managed service) domain is running
