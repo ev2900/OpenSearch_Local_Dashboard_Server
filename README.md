@@ -69,7 +69,7 @@ These instructions will help you install and run a OpenSearch dashboard server a
     * ```sudo apt-get install openssl```
 
     *Run the included script*
-    * ```bash generate-cert.sh```
+    * ```bash generate_cert.sh```
 
 3. Update [docker-compose-ssl.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-ssl.yaml)
 
