@@ -84,7 +84,7 @@ These instructions will help you install and run a OpenSearch dashboard server a
    * ```openssl genrsa -out node1-key-temp.pem 2048```
 
    *Create a certificate request using the key*
-   * ```openssl req -new -key node1-key.pem -out node1.csr```
+   * ```openssl req -new -key node1-key-temp.pem -out node1.csr```
 
    *Create a SAN extension file that describes the hostname used by the dashboard server. This may be necessary for some browsers. We will use 'localhost'.*
    * ```echo 'subjectAltName=DNS:localhost' > node1.ext```
