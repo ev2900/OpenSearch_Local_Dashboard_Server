@@ -1,10 +1,10 @@
 # OpenSearch Local Hosted Dashboard Server
 
-<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-0-blue">
+<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-20-blue">
 
-You can connect a self hosted OpenSearch dashboard server to an Amazon OpenSearch (managed service) hosted domain. 
+You can connect a self hosted OpenSearch dashboard server to an Amazon OpenSearch (managed service) hosted domain.
 
-Amazon OpenSearch (managed service) provides an OpenSearch dashboard as part of a domain deployment. For various reasons you may choose to host your own dashboard server and connect it to your Amazon OpenSearch (managed service) domain. 
+Amazon OpenSearch (managed service) provides an OpenSearch dashboard as part of a domain deployment. For various reasons you may choose to host your own dashboard server and connect it to your Amazon OpenSearch (managed service) domain.
 
 This repository provides how to instructions using two deployment options
 
@@ -13,9 +13,9 @@ This repository provides how to instructions using two deployment options
 
 # Host OpenSearch dashboard via. Amazon ECS Fargate
 
-These instructions will help you deploy an OpenSearch dashboard server as a task on an Amazon Elastic Container Service (ECS) Fargate cluster. The Fargate task will run the OpenSearch dashboard. 
+These instructions will help you deploy an OpenSearch dashboard server as a task on an Amazon Elastic Container Service (ECS) Fargate cluster. The Fargate task will run the OpenSearch dashboard.
 
-To deploy an ECS task running the OpenSearch dashboard click the button below. Ensure you fill out the required CloudFormation parameters. 
+To deploy an ECS task running the OpenSearch dashboard click the button below. Ensure you fill out the required CloudFormation parameters.
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=opensearch-dashboard-no-ssl-ecs-fargate&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/opensearch-dashboard-no-ssl-ecs-fargate.yaml)
 
@@ -43,15 +43,15 @@ These instructions will help you configure and run an OpenSearch dashboard serve
 
     * ```sudo apt-get install docker```
     * ```sudo apt-get install docker-compose```
-    
-2. Update the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) 
-    
+
+2. Update the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml)
+
     * Replace ```<domain_endpoint_url>``` with the OpenSearch domain endpoint
     * Replace ```<user_name>```
     * Replace ```<password>```
 
     You may need to update the OpenSeach dashboard image version. The image in [the sample](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-no-ssl.yaml) is set to version 2.5. The version should be the same as the version of OpenSearch that your Amazon OpenSearch (managed service) domain is running
-    
+
 3. Run the [docker-compose-simple.yaml](https://github.com/ev2900/OpenSearch_Local_Dashboard_Server/blob/main/docker-compose-simple.yaml) file and start the docker container by running ```docker-compose -f <path_to_docker_compose_simple> up```
 
 4. In you web browser navigate to [http://localhost:5601/](http://localhost:5601/) to access the OpenSearch dashboard
