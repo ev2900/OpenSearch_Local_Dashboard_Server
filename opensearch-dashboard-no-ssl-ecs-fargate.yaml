@@ -1,4 +1,4 @@
-Description: Kafka OpenSearch Anomaly Detection Lab
+Description: OpenSearch Local Dashboard Server
 
 Parameters:
   # Should the ECS service be publicly accessible ? 
