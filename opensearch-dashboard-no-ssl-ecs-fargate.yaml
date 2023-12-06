@@ -96,7 +96,7 @@ Resources:
   # -----------------
   
   #
-  # MSK Security Group
+  # ECS Security Group
   #   
   ECSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
