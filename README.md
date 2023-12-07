@@ -1,6 +1,6 @@
 # OpenSearch Local Hosted Dashboard Server
 
-<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-21-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-1013-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-173-green">
+<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-21-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-1049-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-173-green">
 
 You can connect a self hosted OpenSearch dashboard server to an Amazon OpenSearch (managed service) hosted domain.
 
